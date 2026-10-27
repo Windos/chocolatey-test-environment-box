@@ -1,0 +1,9 @@
+# Build outputs
+/output/
+/output-*/
+/packer_cache/
+/logs/
+*.box
+
+# Local ISOs, wherever they are kept
+*.iso
