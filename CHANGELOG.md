@@ -2,6 +2,10 @@
 
 Versions of the `chocolatey/test-environment` Vagrant box.
 
+## Unreleased
+
+- The Vagrantfile embedded in the box no longer sets `config.windows.halt_timeout`. Vagrant ignores that setting, so the box behaves the same.
+
 ## 3.4.0 (2026-10-27)
 
 Windows Server 2019, built from the 17763.3650 evaluation ISO with Windows Updates through the build date. The first version built from this public repository.
