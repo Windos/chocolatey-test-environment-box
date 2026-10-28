@@ -264,10 +264,31 @@ Things worth checking before a release:
 ## Releasing
 
 Nothing in this repository publishes anything, and no prebuilt box is published.
-Releases are recorded in [CHANGELOG.md](CHANGELOG.md) and tagged in this
-repository. Chocolatey Software builds the Package Verifier and Package Scanner
-box from the released source, the same way anyone else does, and records the
-"Windows Updates through" date of that build in the changelog.
+A release is a dated entry in [CHANGELOG.md](CHANGELOG.md) and a tag. Chocolatey
+Software makes one when it builds a new box for the Package Verifier and Package
+Scanner, which it builds from this repository the same way anyone else does.
+
+1. Choose the version number (see [Versioning](#versioning)). Build both boxes
+   from `main`, and test them (see [Testing a Box Locally](#testing-a-box-locally)).
+2. Open a pull request that changes the changelog's "Unreleased" heading to
+   `## X.Y.Z (YYYY-MM-DD)`, and records the updates in the box you built:
+   "Windows Updates through YYYY-MM-DD".
+3. After it merges, pull `main` and tag it with a signed tag. Tags are the bare
+   version number, with no leading `v`:
+
+   ```powershell
+   git tag -s X.Y.Z -m "X.Y.Z"
+   git push <remote> X.Y.Z
+   ```
+
+4. Optionally, create a GitHub Release from the tag, with the changelog entry as
+   its notes. Don't attach a `.box` file, because the license doesn't allow it
+   (see [Evaluation Licensing](#evaluation-licensing)).
+
+An updates-only patch release shouldn't pick up changes that are waiting on
+`main`. If there are any, build from the previous release's tag instead, and add
+the changelog entry and the new tag on a branch made from that tag. Then bring
+the changelog entry into `main` with a pull request.
 
 ## Contributing
 
