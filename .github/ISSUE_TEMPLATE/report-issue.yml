@@ -1,0 +1,57 @@
+name: Report Issue
+description: Building or using the box isn't working as expected.
+labels: ["bug"]
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please search the existing issues first, in case someone has already reported this.
+
+        This repository is for the box itself. Problems with:
+        - A specific package belong with that package's maintainers, linked from its page on the [Chocolatey Community Repository](https://community.chocolatey.org/packages).
+        - The test environment's `Vagrantfile` or scripts belong in [chocolatey-test-environment](https://github.com/chocolatey-community/chocolatey-test-environment/issues).
+        - Security should never be reported in an issue. Follow the [security policy](https://github.com/chocolatey-community/chocolatey-test-environment-box/security/policy) instead.
+  - type: textarea
+    id: current-behavior
+    attributes:
+      label: What Are You Seeing?
+      description: Describe the problem in your own words.
+    validations:
+      required: true
+  - type: textarea
+    id: expected-behavior
+    attributes:
+      label: What Is Expected?
+      description: What did you expect to happen instead?
+    validations:
+      required: true
+  - type: textarea
+    id: repeatable-steps
+    attributes:
+      label: How Did You Get This to Happen?
+      description: The steps someone else can follow to see the same problem.
+      placeholder: |
+        1. Ran `.\build.ps1 -Provider hyperv -Version 3.4.0`
+        2. The build stopped at ...
+    validations:
+      required: true
+  - type: textarea
+    id: system-details
+    attributes:
+      label: System Details
+      description: Run `packer version` and `vagrant --version` to get those versions.
+      value: |
+        * Box version (or commit):
+        * Provider (Hyper-V or VirtualBox):
+        * Host operating system:
+        * Hyper-V or VirtualBox version:
+        * Packer version:
+        * Vagrant version:
+    validations:
+      required: true
+  - type: textarea
+    id: build-log
+    attributes:
+      label: Build Log
+      description: If the build failed, attach the log for that run from the `logs` folder by dragging the file here. Check it for anything you don't want to share first.
